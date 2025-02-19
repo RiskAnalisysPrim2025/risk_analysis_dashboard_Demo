@@ -2,7 +2,14 @@ from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
 
+from config import portfolio_config
+from src.portfolio import Portfolio
+
+
 app = Dash()
+
+
+portafolio = Portfolio(portfolio_config)
 
 # Mock function to get different data for different timeframes
 def get_data(timeframe):
@@ -14,6 +21,7 @@ def get_data(timeframe):
         return pd.DataFrame({"Fruit": ["Apples", "Oranges", "Bananas"], "Amount": [2, 4, 5], "City": ["SF", "Montreal", "SF"]})
 
 app.layout = html.Div([
+    html.H1("Dashboard Análisis de Riesgo"),
     html.Div([
         "Select Timeframe: ",
         dcc.Dropdown(['1H', '4H', '1D'], '1H', id='timeframe-dropdown')
@@ -27,7 +35,7 @@ app.layout = html.Div([
     Input('timeframe-dropdown', 'value')
 )
 def update_data(timeframe):
-    df = get_data(timeframe)
+    #df = portafolio.get_data
     fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
     return fig
 
