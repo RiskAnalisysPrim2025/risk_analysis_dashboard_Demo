@@ -4,9 +4,9 @@ from src.portfolio import Portfolio
 
 class AbstractModel(ABC):
     @abstractmethod
-    def __init__(self, portfolio:Portfolio):
+    def __init__(self, portfolio:Portfolio, **kwargs):
         pass
 
     @abstractmethod
-    def get_variance(self, timeframe:str, period:str ):
+    def get_variances(self, timeframe:str, period:str, future_periods:int)->list[float]:
         pass
