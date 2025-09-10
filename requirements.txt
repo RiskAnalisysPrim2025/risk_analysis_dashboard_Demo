@@ -1,4 +1,7 @@
 plotly~=6.0.0
 pandas~=2.2.3
 dash~=2.18.2
-yfinance~=0.2.54
+yfinance~=0.2.65
+numpy~=2.3.3
+dash-bootstrap-components~=2.0.4
+scipy~=1.16.1

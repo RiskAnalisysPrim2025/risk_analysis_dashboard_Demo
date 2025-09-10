@@ -17,6 +17,8 @@ class Portfolio:
         if hists:
             total_portfolio = pd.concat(hists, axis=1).sum(axis=1)
             return total_portfolio
+        return None
+
 
 if __name__ == '__main__':
     from config import portfolio_config
